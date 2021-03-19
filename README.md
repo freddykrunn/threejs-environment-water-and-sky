@@ -82,11 +82,11 @@ function animation( time ) {
     // update environment
     environment.update(time);
 
-	renderer.render( scene, camera );
+    renderer.render( scene, camera );
 
 }
 ```
 
 
 
-### WARNING: It still does not support the new Three.js version. For now, use the version provided in the '/vendor' folder
+### WARNING: It does not yet support the most recent Three.js version. In the future it will be supported, but for now, use the version provided in the '/vendor' folder. 
