@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Island</title>
+        <link rel="stylesheet" type="text/css" href="main.css">
+    </head>
+    <body onload="onInit()">
+        <div class="main-container">
+            <div class="loading-screen">
+                <div class="loading-screen-content">
+                    <div class="loading-screen-progress-text"></div>
+                    <div class="loading-screen-progress-bar">
+                        <div class="loading-screen-progress-bar-container">
+                            <div class="loading-screen-progress-bar-empty">
+                                <div class="loading-screen-progress-bar-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas-container">
+                <div class="info-button" onClick="showInfo()">i</div>
+                <div class="transition-black-pane"></div>
+                <div class="info-panel" id="infoPanel">
+                    <div class="info-box-container">
+                        <div class="info-box">
+                            <div class="info-close-button" onClick="hideInfo()">x</div>
+                            <div class="info-box-line">
+                                <span class="label">Programming: </span><span>Frederico Gonçalves</span>
+                            </div>
+                            <div class="info-box-line">
+                                <span class="label">3D models: </span><span>Frederico Gonçalves</span>
+                            </div>
+                            <div class="info-box-line">
+                                <span class="label">Textures: </span><span>Frederico Gonçalves</span>
+                            </div>
+                            <div class="info-box-line">
+                                <span class="label-special">GitHub: </span><span>https://github.com/freddykrunn</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-container">
+                    <div class="toolbar">
+                        <div class="toolbar-row">
+                            <div id="camera-selector-container">
+                                <div class="toolbar-button" id="previous-camera" onClick="previousCamera()"></div>
+                                <div class="toolbar-icon" id="camera"></div>
+                                <div class="toolbar-button" id="next-camera" onClick="nextCamera()"></div>
+                            </div>
+                        </div>
+                        <div class="toolbar-row">
+                            <div id="daytime-slider-container">
+                                <input type="range" min="0" max="1440" value="720" class="slider" id="daytime" oninput="setTime()">
+                                <span id="span-0h">0h</span>
+                                <span id="span-6h">6h</span>
+                                <span id="span-12h">12h</span>
+                                <span id="span-18h">18h</span>
+                                <span id="span-24h">24h</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--Vendor-->
+        <script src="vendor/three.js" type="text/javascript"></script>
+        <!-- <script src="vendor/Reflector.js" type="text/javascript"></script>
+        <script src="vendor/Refractor.js" type="text/javascript"></script>
+        <script src="vendor/OBJLoader.js" type="text/javascript"></script> -->
+        <!--Custom-->
+        <script src="src/AssetsLoader.js" type="text/javascript"></script>
+        <script src="src/Director.js" type="text/javascript"></script>
+        <!-- <script src="src/Sun.js" type="text/javascript"></script>
+        <script src="src/Water.js" type="text/javascript"></script>
+        <script src="src/Sky.js" type="text/javascript"></script>
+        <script src="src/Environment.js" type="text/javascript"></script>
+        <script src="src/EnvironmentPhongMaterial.js" type="text/javascript"></script> -->
+        <script src="dist/THREEx.Environment.js" type="text/javascript"></script>
+        <!--Main-->
+        <script src="main.js" type="text/javascript"></script>
+    </body>
+</html>
