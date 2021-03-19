@@ -12,6 +12,8 @@ You provide all the textures needed:
 * Moon
 * Sun corona
 
+Visit the demo: http://the-island-webgl.herokuapp.com/index.html
+
 ### Usage
 
 ```javascript
