@@ -1,0 +1,24 @@
+{
+  "name": "minify",
+  "version": "1.0.0",
+  "description": "Minify stuff",
+  "author": "Frederico Gonçalves",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-header": "^2.0.9",
+    "gulp-plumber": "^1.2.1",
+    "gulp-uglify": "^3.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-classes": "^7.12.1",
+    "@babel/plugin-transform-for-of": "^7.12.1",
+    "@babel/plugin-transform-instanceof": "^7.12.1",
+    "@babel/plugin-transform-object-super": "^7.12.1",
+    "@babel/plugin-transform-template-literals": "^7.12.1"
+  }
+}

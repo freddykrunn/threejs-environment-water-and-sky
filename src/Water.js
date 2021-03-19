@@ -296,10 +296,5 @@ THREEx.Water = class Water extends THREE.Mesh {
 			scope.visible = true;
 
 		};
-
-		// initial update of water depth texture
-		setTimeout(() => {
-			this.updateDepthTexture();
-		}, 1000);
 	}
 }

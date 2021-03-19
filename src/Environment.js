@@ -177,7 +177,7 @@ THREEx.Environment = class Environment extends THREE.Object3D {
             }, //24h
         ]    
 
-        var sky = new THREEx.Sky(radius, camera, scene, textures.sunCorona, textures.starsTexture);
+        var sky = new THREEx.Sky(radius, camera, scene, textures.sunCorona, textures.stars);
         var water = new THREEx.Water(radius, Math.round(radius / 300), renderer, scene, camera, textures.waterNormal, textures.waterFoam);
         water.position.set(0, waterPlaneY, 0);
 
@@ -186,7 +186,7 @@ THREEx.Environment = class Environment extends THREE.Object3D {
         var oceanFloorMaterial = new THREEx.EnvironmentPhongMaterial( {
             color: 0xFFFFFF,
             map: textures.ground,
-            causticsMap: textures.causticsTexture,
+            causticsMap: textures.caustics,
             shininess: 0
         });
         oceanFloorMaterial.map.wrapS = oceanFloorMaterial.map.wrapT = THREE.RepeatWrapping;
@@ -215,6 +215,15 @@ THREEx.Environment = class Environment extends THREE.Object3D {
                 var obj = periodValues[indexStart][prop].clone();
                 obj.lerp(periodValues[indexEnd][prop], percentage);
                 return obj;
+            }
+        }
+
+        /**
+         * Update water depth texture
+         */
+        this.updateWaterDepthTexture = function() {
+            if (this.water) {
+                this.water.updateDepthTexture();
             }
         }
 
@@ -256,7 +265,7 @@ THREEx.Environment = class Environment extends THREE.Object3D {
                 } else if (minutes >= MOONRISE_MINUTES || minutes <= MOONSET_MINUTES) {
                     const nextDayMinutes = minutes >= 0 && minutes <= MOONSET_MINUTES ? 1440 : 0;
                     angle_sun.y = SUN_MIN_ANGLE + (SUN_MAX_ANGLE * (((minutes+nextDayMinutes)-MOONRISE_MINUTES) / ((MOONSET_MINUTES+1440)-MOONRISE_MINUTES)));
-                    sky.sun.setTexture(textures.moonTexture);
+                    sky.sun.setTexture(textures.moon);
                 } else {
                     angle_sun.y = -90;
                     sky.sun.setTexture(null);
@@ -312,8 +321,5 @@ THREEx.Environment = class Environment extends THREE.Object3D {
 
             sky.update(delta);
         }
-
-        // reset time
-        this.setTime(720);
     }
 }

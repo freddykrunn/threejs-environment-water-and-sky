@@ -189,9 +189,9 @@ function setupEnvironment() {
         waterNormal: assetsLoader.get("water-normal-texture"),
         waterFoam: assetsLoader.get("water-foam-texture"),
         ground: assetsLoader.get("ground-texture"),
-        causticsTexture: assetsLoader.get("water-caustics-texture"),
-        starsTexture: assetsLoader.get("stars-texture"),
-        moonTexture: assetsLoader.get("moon-texture")
+        caustics: assetsLoader.get("water-caustics-texture"),
+        stars: assetsLoader.get("stars-texture"),
+        moon: assetsLoader.get("moon-texture")
     });
     scene.add(environment);
 
@@ -230,6 +230,12 @@ function setupEnvironment() {
     island.position.y = -95;
     island.scale.set(2000,2000,2000);
     scene.add( island );
+
+    // set time to 12h
+    environment.setTime(720);
+
+    // initial update of water depth texture (needs to be done every time new terrain static objects are added to the scene)
+    environment.updateWaterDepthTexture();
 }
 
 /**

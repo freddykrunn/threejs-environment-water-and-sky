@@ -28,16 +28,15 @@ function init() {
 
 	renderer = new THREE.WebGLRenderer( { antialias: true } );
 	renderer.setSize( window.innerWidth, window.innerHeight );
-	renderer.setAnimationLoop( animation );
 	document.body.appendChild( renderer.domElement );
 
-    var sunCoronaTexture = new THREE.TextureLoader().load( 'textures/sun-corona-texture.jpg' );
-    var waterNormalTexture = new THREE.TextureLoader().load( 'textures/water-normal-texture.jpg' );
-    var waterFoamTexture = new THREE.TextureLoader().load( 'textures/water-foam-texture.jpg' );
-    var groundTexture = new THREE.TextureLoader().load( 'textures/ground-texture.jpg' );
-    var causticsTexture = new THREE.TextureLoader().load( 'textures/water-caustics-texture.jpg' );
-    var starsTexture = new THREE.TextureLoader().load( 'textures/stars-texture.jpg' );
-    var moonTexture = new THREE.TextureLoader().load( 'textures/moon-texture.jpg' );
+    var sunCoronaTexture = new THREE.TextureLoader().load( 'textures/corona.png' );
+    var waterNormalTexture = new THREE.TextureLoader().load( 'textures/waterNormal.png' );
+    var waterFoamTexture = new THREE.TextureLoader().load( 'textures/waterFoam.png' );
+    var groundTexture = new THREE.TextureLoader().load( 'textures/ground.png' );
+    var causticsTexture = new THREE.TextureLoader().load( 'textures/waterCaustics.png' );
+    var starsTexture = new THREE.TextureLoader().load( 'textures/waterFoam.jpg' );
+    var moonTexture = new THREE.TextureLoader().load( 'textures/moon.jpg' );
 
     environment = new THREEx.Environment(renderer, scene, camera, 5000, 100, 0, -100, {
         sunCorona: sunCoronaTexture,
@@ -68,7 +67,14 @@ function init() {
         ];
 
     // accepts the number of minutes of the day (between 0 - 1440 minutes) (0h - 24h)
-    environment.setTime(720); // set time to 12h
+     // set time to 12h
+    environment.setTime(720);
+
+    // initial update of water depth texture (needs to be done every time new terrain static objects are added to the scene)
+    // (This give water the gradient color (deep blue / light blue) according to the depth of the ocean floor bellow)
+    environment.updateWaterDepthTexture();
+
+    renderer.setAnimationLoop( animation );
 }
 
 function animation( time ) {
