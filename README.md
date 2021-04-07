@@ -3,6 +3,10 @@
 The aim of the project is to provide a realistic environment for your threejs projects. It consists of an 'Environment' object that renders a skydome and a water plane with realistic shaders that react to terrain and objects.
 It is able to render the water with environment reflections and refractions as well as projected caustics in submerged objects. The sky can be updated for every time of the day since dawn to dusk and night.
 
+![alt text](https://github.com/freddykrunn/threejs-environment-water-and-sky/blob/main/assets/screenshot-01.png?raw=true)
+
+![alt text](https://github.com/freddykrunn/threejs-environment-water-and-sky/blob/main/assets/screenshot-02.png?raw=true)
+
 You provide all the textures needed:
 * Water normal
 * Water foam
